@@ -71,8 +71,8 @@ fprintf('Cost at initial theta (zeros): %f\n', cost);
 fprintf('Gradient at initial theta (zeros): \n');
 fprintf(' %f \n', grad);
 
-fprintf('\nProgram paused. Press enter to continue.\n');
-pause;
+% fprintf('\nProgram paused. Press enter to continue.\n');
+% pause;
 
 
 %% ============= Part 3: Optimizing using fminunc  =============
@@ -93,20 +93,20 @@ fprintf('theta: \n');
 fprintf(' %f \n', theta);
 
 % Plot Boundary
-plotDecisionBoundary(theta, X, y);
+% plotDecisionBoundary(theta, X, y);
 
 % Put some labels 
-hold on;
+% hold on;
 % Labels and Legend
-xlabel('Exam 1 score')
-ylabel('Exam 2 score')
+% xlabel('Exam 1 score')
+% ylabel('Exam 2 score')
 
 % Specified in plot order
-legend('Admitted', 'Not admitted')
-hold off;
+% legend('Admitted', 'Not admitted')
+% hold off;
 
-fprintf('\nProgram paused. Press enter to continue.\n');
-pause;
+% fprintf('\nProgram paused. Press enter to continue.\n');
+% pause;
 
 %% ============== Part 4: Predict and Accuracies ==============
 %  After learning the parameters, you'll like to use it to predict the outcomes
