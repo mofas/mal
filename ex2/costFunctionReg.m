@@ -24,14 +24,19 @@ pt(1) = 0;
 z = X*theta;
 h = sigmoid(z);
 
-J = (1/m)*( (-y'*log(h)) - (1 - y)'*log(1 - h) ) + (lambda/(2*m))*norm(theta([2:end]))^2;
+sum(pt.^2);
+% norm(theta([2:end]))^2
+
+% J = (1/m)*( (-y'*log(h)) - (1 - y)'*log(1 - h) ) + (lambda/(2*m))*norm(theta([2:end]))^2;
+J = (1/m)*( (-y'*log(h)) - (1 - y)'*log(1 - h) ) + (lambda/(2*m))*sum(pt.^2);
+
+% G = (lambda/m).*theta;
+% G(1) = 0;
+% grad = (1/m)*(( h - y )'*X) + G';
+
+grad = (1/m)*(( h - y )'*X) + (lambda/m).*pt';
 
 
-G = (lambda/m).*theta;
-G(1) = 0;
-L = (lambda/m).*eye(m);
-L(1) = 0;
-grad = (1/m)*(( h - y )'*X) + G';
 
 % =============================================================
 
