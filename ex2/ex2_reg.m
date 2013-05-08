@@ -27,18 +27,18 @@ clear ; close all; clc
 data = load('ex2data2.txt');
 X = data(:, [1, 2]); y = data(:, 3);
 
-plotData(X, y);
+% plotData(X, y);
 
 % Put some labels 
-hold on;
+% hold on;
 
 % Labels and Legend
-xlabel('Microchip Test 1')
-ylabel('Microchip Test 2')
+% xlabel('Microchip Test 1')
+% ylabel('Microchip Test 2')
 
 % Specified in plot order
-legend('y = 1', 'y = 0')
-hold off;
+% legend('y = 1', 'y = 0')
+% hold off;
 
 
 %% =========== Part 1: Regularized Logistic Regression ============
@@ -90,7 +90,7 @@ initial_theta = zeros(size(X, 2), 1);
 lambda = 1;
 
 % Set Options
-options = optimset('GradObj', 'on', 'MaxIter', 400);
+options = optimset('GradObj', 'on', 'MaxIter', 1600);
 
 % Optimize
 [theta, J, exit_flag] = ...
