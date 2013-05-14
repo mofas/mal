@@ -37,13 +37,13 @@ load('ex3data1.mat');
 m = size(X, 1);
 
 % Randomly select 100 data points to display
-sel = randperm(size(X, 1));
-sel = sel(1:100);
+% sel = randperm(size(X, 1));
+% sel = sel(1:100);
 
-displayData(X(sel, :));
+% displayData(X(sel, :));
 
-fprintf('Program paused. Press enter to continue.\n');
-pause;
+% fprintf('Program paused. Press enter to continue.\n');
+% pause;
 
 %% ================ Part 2: Loading Pameters ================
 % In this part of the exercise, we load some pre-initialized 
