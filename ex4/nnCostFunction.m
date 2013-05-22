@@ -79,12 +79,56 @@ Theta2_grad = zeros(size(Theta2));
 	end;
 
 
-	J = (1/m)*( sum( sum( (-yMatrix) .* log(h) - (1 .- yMatrix) .* log(1 - h) ) ) );	
-
-	disp(J);
+	J = (1/m)*( sum( sum( (-yMatrix) .* log(h) - (1 - yMatrix) .* log(1 - h) ) ) );	
 	
 
-	% grad = (1/m)*(( h - y )'*X);
+	%  regularization term
+
+	t1 = Theta1;
+	t2 = Theta2;
+	t1(:,1) = 0;
+	t2(:,1) = 0;
+	theta1Squ = sum( sum(t1.^2) );
+	theta2Squ = sum( sum(t2.^2) );
+
+	regTerm = (lambda/(2*m))*(theta1Squ + theta2Squ);
+
+	J = J + regTerm;
+
+
+	% backpropagation	
+
+	oriA1 = a1;
+
+	for t = 1:m		
+
+		% forward
+		a1 = oriA1(t,:);
+		z2 = a1*Theta1';
+		a2 = sigmoid(z2);
+		a2 = [1 a2];
+		z3 = a2*Theta2';
+		a3 = sigmoid(z3);
+
+		% backward
+		z2 = [1 z2];
+		delta_3 = a3 - yMatrix(t,:);		
+		delta_2 = (delta_3*Theta2) .* sigmoidGradient(z2);
+		delta_2 = delta_2(: , 2:end);		
+
+		Theta1_grad = Theta1_grad + delta_2'*a1; 
+		Theta2_grad = Theta2_grad + delta_3'*a2;
+
+	end;
+
+	Theta1_grad = Theta1_grad ./ m;
+	Theta2_grad = Theta2_grad ./ m;
+	
+	Theta1_gradReg = [ zeros(size(Theta1 ,1),1) (lambda/m).*Theta1(:, 2:end) ];
+	Theta2_gradReg = [ zeros(size(Theta2 ,1),1) (lambda/m).*Theta2(:, 2:end) ];
+
+	Theta1_grad = Theta1_grad + Theta1_gradReg;
+	Theta2_grad = Theta2_grad + Theta2_gradReg;
 
 
 

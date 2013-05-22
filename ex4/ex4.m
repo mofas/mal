@@ -72,16 +72,16 @@ nn_params = [Theta1(:) ; Theta2(:)];
 fprintf('\nFeedforward Using Neural Network ...\n')
 
 % Weight regularization parameter (we set this to 0 here).
-lambda = 0;
+% lambda = 0;
 
-J = nnCostFunction(nn_params, input_layer_size, hidden_layer_size, ...
-                   num_labels, X, y, lambda);
+% J = nnCostFunction(nn_params, input_layer_size, hidden_layer_size, ...
+%                   num_labels, X, y, lambda);
 
-fprintf(['Cost at parameters (loaded from ex4weights): %f '...
-         '\n(this value should be about 0.287629)\n'], J);
+% fprintf(['Cost at parameters (loaded from ex4weights): %f '...
+%         '\n(this value should be about 0.287629)\n'], J);
 
-fprintf('\nProgram paused. Press enter to continue.\n');
-pause;
+% fprintf('\nProgram paused. Press enter to continue.\n');
+% pause;
 
 %% =============== Part 4: Implement Regularization ===============
 %  Once your cost function implementation is correct, you should now
@@ -91,16 +91,16 @@ pause;
 fprintf('\nChecking Cost Function (w/ Regularization) ... \n')
 
 % Weight regularization parameter (we set this to 1 here).
-lambda = 1;
+% lambda = 1;
 
-J = nnCostFunction(nn_params, input_layer_size, hidden_layer_size, ...
-                   num_labels, X, y, lambda);
+% J = nnCostFunction(nn_params, input_layer_size, hidden_layer_size, ...
+%                   num_labels, X, y, lambda);
 
-fprintf(['Cost at parameters (loaded from ex4weights): %f '...
-         '\n(this value should be about 0.383770)\n'], J);
+% fprintf(['Cost at parameters (loaded from ex4weights): %f '...
+%         '\n(this value should be about 0.383770)\n'], J);
 
-fprintf('Program paused. Press enter to continue.\n');
-pause;
+% fprintf('Program paused. Press enter to continue.\n');
+% pause;
 
 
 %% ================ Part 5: Sigmoid Gradient  ================
@@ -109,15 +109,15 @@ pause;
 %  code in the sigmoidGradient.m file.
 %
 
-fprintf('\nEvaluating sigmoid gradient...\n')
+% fprintf('\nEvaluating sigmoid gradient...\n')
 
-g = sigmoidGradient([1 -0.5 0 0.5 1]);
-fprintf('Sigmoid gradient evaluated at [1 -0.5 0 0.5 1]:\n  ');
-fprintf('%f ', g);
-fprintf('\n\n');
+% g = sigmoidGradient([1 -0.5 0 0.5 1]);
+% fprintf('Sigmoid gradient evaluated at [1 -0.5 0 0.5 1]:\n  ');
+% fprintf('%f ', g);
+% fprintf('\n\n');
 
-fprintf('Program paused. Press enter to continue.\n');
-pause;
+% fprintf('Program paused. Press enter to continue.\n');
+% pause;
 
 
 %% ================ Part 6: Initializing Pameters ================
@@ -141,13 +141,13 @@ initial_nn_params = [initial_Theta1(:) ; initial_Theta2(:)];
 %  code you've written in nnCostFunction.m to return the partial
 %  derivatives of the parameters.
 %
-fprintf('\nChecking Backpropagation... \n');
+% fprintf('\nChecking Backpropagation... \n');
 
 %  Check gradients by running checkNNGradients
-checkNNGradients;
+% checkNNGradients;
 
-fprintf('\nProgram paused. Press enter to continue.\n');
-pause;
+% fprintf('\nProgram paused. Press enter to continue.\n');
+% pause;
 
 
 %% =============== Part 8: Implement Regularization ===============
