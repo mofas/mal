@@ -29,10 +29,14 @@ sigma = zeros(1, size(X, 2));
 	dataNo = size(X , 1);
 	mu = mean(X);
 	sigma = std(X);	
-	for i = 1: specNo				
-		for j = 1:dataNo
-			X_norm(j ,i) = (X(j , i) - mu(1, i))/sigma(1 , i);
-		end;	
+%	for i = 1: specNo				
+%		for j = 1:dataNo
+%			X_norm(j ,i) = (X(j , i) - mu(1, i))/sigma(1 , i);
+%		end;	
+%	end;
+
+	for i = 1 : size(X , 1)
+		X_norm(i , :) = (X(i , :) - mu) ./ sigma;
 	end;
 		
 
