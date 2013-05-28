@@ -24,7 +24,7 @@ pt(1) = 0;
 z = X*theta;
 h = sigmoid(z);
 
-sum(pt.^2);
+% sum(pt.^2);
 % norm(theta([2:end]))^2
 
 % J = (1/m)*( (-y'*log(h)) - (1 - y)'*log(1 - h) ) + (lambda/(2*m))*norm(theta([2:end]))^2;
