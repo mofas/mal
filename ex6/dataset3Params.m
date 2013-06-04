@@ -23,11 +23,36 @@ sigma = 0.3;
 %        mean(double(predictions ~= yval))
 %
 
+candidateC = [0.01, 0.03 , 0.1 , 0.3 , 1 , 3 , 10 , 30];
+candidateSigma = [0.01, 0.03 , 0.1 , 0.3 , 1 , 3 , 10 , 30];
+
+bestC = candidateC(1);
+bestSigma = candidateSigma(1);
+
+model = svmTrain(X, y, bestC, @(x1, x2) gaussianKernel(x1, x2, bestSigma));
+bestPrediction = svmPredict(model, Xval);
+bestError = mean(double(bestPrediction ~= yval));
 
 
 
+for i = 2:length(candidateC)
+	for j = 2:length(candidateSigma)
+		testC = candidateC(i);
+		testSigma = candidateSigma(j);
+		testModel = svmTrain(X, y, testC, @(x1, x2) gaussianKernel(x1, x2, testSigma));
+		textPrediction = svmPredict(testModel, Xval);
+		testError = mean(double(textPrediction ~= yval));
+		if(testError < bestError)
+			bestError = testError;
+			bestC = testC;
+			bestSigma = testSigma;		
+		end;
+	end;
+end;
 
 
+C = bestC;
+sigma = bestSigma;
 
 % =========================================================================
 
